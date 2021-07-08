@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Achat</h1>
+                        <h1>Reclamation</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -19,7 +19,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Liste Achat</h3>
+                                <h3 class="card-title">Liste Reclamation</h3>
 
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
@@ -36,8 +36,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Nom Commercant </th>
-                                        <th>Date</th>
-                                        <th>Montant</th>
+                                        <th>Sujet</th>
                                         <th width="280px">Action</th>
                                     </tr>
                                     </thead>
@@ -45,12 +44,11 @@
                                     <tr>
                                         <td>1</td>
                                         <td>Marwen</td>
-                                        <td>12/06/2021</td>
-                                        <td>50 dt</td>
+                                        <td>aaaaaaa</td>
                                         <td>
 
                                             <form action="#" method="POST">
-                                                <a class="btn btn-info" href="#">Show</a>
+                                                <a class="btn btn-info" href="{{ route('reclamation.show') }}">Show</a>
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
 
@@ -82,8 +80,6 @@
                 </div>
             </div>
         </div>--}}
-
-
         {{--
 
 

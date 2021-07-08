@@ -8,6 +8,10 @@ class ReclamationController extends Controller
 {
     public function index(Request $request)
     {
-        return view('achat.index');
+        return view('reclamation.index');
+    }
+    public function show()
+    {
+        return view('reclamation.show');
     }
 }

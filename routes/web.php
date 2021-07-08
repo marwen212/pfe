@@ -51,6 +51,8 @@ Route::post('/cheques/createe', 'App\Http\Controllers\ChequeController@store')->
 
 Route::get('/cheques', 'App\Http\Controllers\ChequeController@index')->name('cheque.index');
 Route::get('/achat', 'App\Http\Controllers\AchatController@index')->name('achat.index');
+Route::get('/reclamation', 'App\Http\Controllers\ReclamationController@index')->name('reclamation.index');
+Route::get('/reclamation/1', 'App\Http\Controllers\ReclamationController@show')->name('reclamation.show');
 
 //Route::get('/cheques/create', 'App\Http\Controllers\ChequeController@show')->name('cheque.create');
 Route::get('/cheques/show/{id}', 'App\Http\Controllers\ChequeController@show')->name('cheque.show');

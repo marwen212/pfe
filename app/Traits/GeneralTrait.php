@@ -35,7 +35,18 @@ trait GeneralTrait
             'status' => true,
             'errNum' => "S000",
             'msg' => $msg,
-            $key => $value
+            "id"=> $value->id,
+            "nom_marchand"=> $value->nom_marchand,
+            "prenom_marchand"=> $value->prenom_marchand,
+            "CIN"=> $value->CIN,
+            "tel"=> $value->tel,
+            "adresse_marchand"=> $value->adresse_marchand,
+            "created_at"=> $value->created_at,
+            "updated_at"=> $value->updated_at,
+            "api_token"=> $value->api_token,
+
+
+           // $key => $value
         ]);
     }
 

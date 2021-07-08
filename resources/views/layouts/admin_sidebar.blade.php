@@ -127,6 +127,14 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
+                    <a href="{{route('reclamation.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <p>
+                            Reclamation
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
                     <a href="{{route('logout')}}" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>
                         <p>

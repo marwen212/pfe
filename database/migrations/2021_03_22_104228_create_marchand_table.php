@@ -20,6 +20,7 @@ class CreateMarchandTable extends Migration
             $table->integer('CIN')->unique();
             $table->string('tel')->nullable();
             $table->string('login')->unique();
+            $table->double('solde')->nullable();
             $table->string('password');
             $table->string('adresse_marchand')->nullable();
             $table->timestamps();

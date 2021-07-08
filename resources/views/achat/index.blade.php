@@ -50,7 +50,7 @@
                                         <td>
 
                                             <form action="#" method="POST">
-                                                <a class="btn btn-info" href="#">Show</a>
+
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
 
