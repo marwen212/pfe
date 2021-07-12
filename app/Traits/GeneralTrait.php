@@ -28,7 +28,29 @@ trait GeneralTrait
             'msg' => $msg
         ];
     }
+    public function returnDatafamille($key, $value, $msg = "")
+    {
+        return response()->json([
+            'status' => true,
+            'errNum' => "S000",
+            'msg' => $msg,
+            "id_bons" => $value->id,
+            "id_personne"=>$value->personne->id,
+            "nom" => $value->personne->nom,
+            "prenom" => $value->personne->prenom,
+            "CIN" => $value->personne->CIN,
+            "tel" => $value->personne->tel,
+            "adresse" => $value->personne->adresse,
+            "valdité"=> $value->validité,
+            "solde"=> $value->montant,
+            "created_at" => $value->created_at,
+            "updated_at" => $value->updated_at,
+            "api_token" => $value->api_token,
 
+
+            // $key => $value
+        ]);
+    }
     public function returnData($key, $value, $msg = "")
     {
         return response()->json([
@@ -48,6 +70,7 @@ trait GeneralTrait
 
            // $key => $value
         ]);
+
     }
 
 

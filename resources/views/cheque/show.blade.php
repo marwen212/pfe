@@ -519,7 +519,7 @@
 <div class="card-body">
     <div class="header">
         <div class="bottom">
-            <p id="doller">{!! QrCode::size(100)->generate(bcrypt($cheque->personne->CIN.' '.$cheque->created_at)); !!}</p>
+            <p id="doller">{!! QrCode::size(100)->generate($cheque->created_at); !!}</p>
         </div>
         <br/>
     </div>

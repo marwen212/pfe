@@ -21,17 +21,17 @@ use Illuminate\Support\Facades\Route;
 //Route::group(['middleware' => ['api'/*,'checkPassword',*/,'changeLanguage'], 'namespace' => 'Api'], function () {
    // Route::post('get-main-categories', 'CategoriesController@index');
   //  Route::post('get-category-byId', 'CategoriesController@getCategoryById');
-  //  Route::post('change-category-status', 'CategoriesController@changeStatus');    
+  //  Route::post('change-category-status', 'CategoriesController@changeStatus');
 //});
 
     Route::group(['prefix' => 'admin','namespace'=> 'App\Http\Controllers\Api\Marchand'],function (){
         Route::post('login', 'AuthController@login');
 
         Route::post('logout','AuthController@logout') -> middleware(['auth.guard:marchand-api']);
-       // Route::post('get-personne-byCin','AuthController@getPersonneByCin') -> middleware(['auth.guard:marchand-api']);
+       //Route::post('get-personne-byCin','AuthController@getPersonneByCin') -> middleware(['auth.guard:marchand-api']);
        Route::get('get-personne-bycheque/{created_at}','AuthController@getPersonneByCheque') -> middleware(['auth.guard:marchand-api']);
        Route::post('reclamation','AuthController@reclamation') -> middleware(['auth.guard:marchand-api']);
-         
+
         //invalidate token security side
 
          //broken access controller user enumeration

@@ -77,37 +77,38 @@ class AuthController extends Controller
     {
 
       // $personne = Personne::selection()->find($request->id);
-    
+
        $personne = Personne::where('CIN',$request -> CIN) ->first();
        $cheque= Cheque::where ('id',$personne -> id)->first();
       // dd( $cheque);
         if (!$personne)
-           
+
         return $this->returnError('001', 'not found');
 
      return $this->returnData('personne', $personne, $cheque );
 
 
-    }  public function getPersonneByCheque($createdAt)
+    }
+    public function getPersonneByCheque($createdAt)
     {
        $cheque= Cheque::where ('created_at', $createdAt)->first();
-       $personne = Personne::where('id',$cheque -> personne_id) ->first();      
-     
+       $personne = Personne::where('id',$cheque -> personne_id) ->first();
+
         if (!$cheque)
-           
+
         return $this->returnError('001', 'not found');
 
-     return $this->returnData('PersonneByCheque',$personne , $cheque );
+     return $this->returnDatafamille('PersonneByCheque', $cheque );
 
 
     }
 
     public function profile()
     {
-       
+
 
        $marchand = Auth::guard('marchand-api')->user();
- 
+
         return  $this->returnData('marchand', $marchand );
 
     }
@@ -141,18 +142,20 @@ class AuthController extends Controller
             $marchand = Marchand::findOrFail($marchandId);
         } catch (ModelNotFoundException $e) {
             throw new NotFoundHttpException();
-        }        
-            //if condition verifier le montant par rapport solde cheque 
-            if ($cheque->montant > $request->montant)  {
+        }
+            //if condition verifier le montant par rapport solde cheque
+            if ($cheque->montant >= $request->montant)  {
                 $achat = new Achat();
                 $achat->marchand_id = $marchand->id;
                 $achat->cheque_id = $cheque->id;
                 $achat->montant = $request->montant;
                 $achat->save();
                 $montantInitial= $cheque->montant;
-               
+
                 $cheque::where('id',$chequeId) -> update(['montant' =>  $cheque->montant= $montantInitial - $request->montant ]);
-                $cheque->save(); 
+                $cheque->save();
+                $marchand::where('id',$marchand->id)-> update(['solde' =>  $marchand->solde= $marchand->solde + $request->montant ]);
+                $marchand->save();
 
             }
             else {
@@ -162,9 +165,9 @@ class AuthController extends Controller
                         'message' => 'montant insuffisant',
                     ]
                 );
-            }  
-            
-               
+            }
+
+
             if ( $achat->save()) {
                 return response()->json(
                     [
@@ -178,7 +181,7 @@ class AuthController extends Controller
                         'message' => 'Oops, smth wrong .',
                     ]
                 );
-            }   
+            }
          }
 
          public function reclamation(Request $request)
@@ -203,11 +206,11 @@ class AuthController extends Controller
                             'message' => 'Oops, smth wrong .',
                         ]
                     );
-                }   
+                }
 
          }
-      
 
 
-    
+
+
 }
