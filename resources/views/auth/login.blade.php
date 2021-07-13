@@ -54,7 +54,7 @@
                 </div>
             </form>
             <p class="mb-0">
-                <a href="{{url('auth/passwords/reset.blade.php')}}" class="text-center">Mot de passe oublié ?</a>
+                <a href="{{ route('forget.password.get') }}" class="text-center">Mot de passe oublié ?</a>
             </p>
         </div>
         <!-- /.login-card-body -->

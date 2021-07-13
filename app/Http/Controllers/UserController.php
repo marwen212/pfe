@@ -156,4 +156,33 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with('success','User deleted successfully');
     }
+    function changer_pass(Request $req)
+    {
+
+        $code = str::random(8);
+        $test=0;
+        $user = User::where('email', $req->email)->first();
+        if ($user) {
+            $user->password = md5($code);  //$code;
+            $user->save();
+            session(['code' => $code]);
+            $details = [
+                'title' => 'Title: code de changement de mot de base',
+                'body' => 'body',
+            ];
+            Mail::to($user['email'])->send(new \App\Mail\SendMail($details));
+            session()->forget(['code']);
+            $test=1;
+            return view ('login');
+        }
+
+
+
+        if(test == 0){
+            return view('login');
+        }
+
+
+    }
+
 }
