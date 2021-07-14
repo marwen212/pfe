@@ -92,21 +92,22 @@ class PersonneController extends Controller
      * @param \App\Personne $personne
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Personne $personne)
+    public function update(Request $request, $id)
     {
 
         request()->validate([
             'nom' => 'required',
             'prenom' => 'required',
-            'CIN' => 'required|unique:personnes',
+            'CIN' => 'required|unique:personnes,CIN,'.$id,
             'date_naiss' => 'required',
             'tel' => 'required',
             'adresse' => 'required',
             'Situation_Fam' => 'required',
             'nb_enfants' => 'required'
         ]);
-
-        $personne->update($request->all());
+        $input = $request->all();
+        $personne = Personne::find($id);
+        $personne->update($input);
 
         return redirect()->route('personne.index')
             ->with('success');

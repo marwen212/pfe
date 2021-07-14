@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Date de Naissance</label>
-                                <input type="text" name="date_naiss" class="form-control" placeholder="JJ/MM/AAAA">
+                                <input type="date" name="date_naiss" class="form-control" placeholder="JJ/MM/AAAA">
 
                             </div>
                             <div class="form-group">
@@ -79,7 +79,7 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
                         </div>
                     </form>
                 </div>

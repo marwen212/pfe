@@ -54,7 +54,7 @@ class MarchandController extends Controller
         Marchand::create($input);
 
 
-        return redirect()->route('personne.index')
+        return redirect()->route('marchand.index')
             ->with('success');
     }
 
@@ -87,14 +87,14 @@ class MarchandController extends Controller
      * @param \App\Personne $marchand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Marchand $marchand)
+    public function update(Request $request, $id)
     {
         request()->validate([
             'nom_marchand' => 'required',
             'prenom_marchand' => 'required',
-            'CIN' => 'required|unique:marchands',
+            'CIN' => 'required|unique:marchands,CIN,'.$id,
             'tel' => 'required',
-            'login' => 'required|unique:marchands,login',
+            'login' => 'required|unique:marchands,login,'.$id,
             'password' =>'same:confirm-password',
             'adresse_marchand' => 'required'
         ]);
@@ -104,7 +104,7 @@ class MarchandController extends Controller
         }else{
             $input = Arr::except($input,array('password'));
         }
-
+        $marchand = Marchand::find($id);
         $marchand->update($input);
 
         return redirect()->route('marchand.index')

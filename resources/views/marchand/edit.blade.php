@@ -36,85 +36,91 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ route('marchand.update',$marchand->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
+                    {!! Form::model($marchand, ['method' => 'PATCH','route' => ['marchand.update', $marchand->id]]) !!}
+
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleInputName1">Nom</label>
-                                <input type="text" name="nom_marchand" value="{{$marchand->nom_marchand}}" class="form-control" placeholder="Nom">
+                                <label for="exampleInputName1">Name</label>
+                                {!! Form::text('nom_marchand', null, array('placeholder' => 'Name','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">prenom</label>
-                                <input type="text" name="prenom_marchand" value="{{$marchand->prenom_marchand}}" class="form-control" placeholder="Prenom">
+                                {!! Form::text('prenom_marchand', null, array('placeholder' => 'prenom','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">CIN</label>
-                                <input type="number" name="CIN" value="{{$marchand->CIN}}" class="form-control" placeholder="CIN">
+                                <label for="exampleInputNumber1">CIN</label>
+                                {!! Form::number('CIN',null, array('placeholder' => 'CIN','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">Numero Telephone</label>
-                                <input type="number" name="tel" value="{{$marchand->tel}}" class="form-control" placeholder="Votre Numero">
+                                <label for="exampleInputNumber1">Numero Telephone</label>
+                                {!! Form::number('tel',null, array('placeholder' => 'Your phone number','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">Login</label>
-                                <input type="text" name="login" value="{{$marchand->login}}" class="form-control" placeholder="Nom">
+                                <label for="exampleInputName1">login</label>
+                                {!! Form::text('login', null, array('placeholder' => 'login','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">Password</label>
-                                <input type="password" name="password" value="{{$marchand->password}}" class="form-control" placeholder="Password">
+                                <label for="exampleInputPassword1">Password</label>
+                                {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">Confirm Password</label>
-                                <input type="password" name="confirm-password" class="form-control" placeholder="Confirm Password">
+                                <label for="exampleInputPassword1">Confirm Password</label>
+                                {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Adresse</label>
-                                <input type="text" name="adresse_marchand" value="{{$marchand->adresse_marchand}}" class="form-control" placeholder="Adresse">
+                                {!! Form::text('adresse_marchand', null, array('placeholder' => 'Adresse','class' => 'form-control','required'=>'')) !!}
                             </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </section>
     </div>
-    {{--<div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+{{--    {!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
+    <div class="card-body">
+        <div class="form-group">
+            <label for="exampleInputName1">Name</label>
+            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control','required'=>'')) !!}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control','required'=>'')) !!}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control','required'=>'')) !!}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Confirm Password</label>
+            {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control','required'=>'')) !!}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputNumber1">Phone</label>
+            {!! Form::number('phone',null, array('placeholder' => 'Your phone number','class' => 'form-control','required'=>'')) !!}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">Photo</label>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="exampleInputFile">
+                    <label class="custom-file-label" for="photo">Choose file</label>
+                </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email:</strong>
-                {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
-            </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Role</label>
+            {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Password:</strong>
-                {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Confirm Password:</strong>
-                {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Role:</strong>
-                {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>--}}
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    {!! Form::close() !!}--}}
 @endsection

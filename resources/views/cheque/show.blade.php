@@ -525,33 +525,30 @@
     </div>
     <div class="fotter">
         <div class="in-fotter">
-            <label><h2>Nom</h2></label>
+            <label><h3>Nom</h3></label>
             <div class="card">
                 <input type="text" class="card-number" id="card-number" value="{{$cheque->personne->nom}}">
             </div>
            <br/>
-            <label><h2>Prenom</h2></label>
+            <label><h3>Prenom</h3></label>
             <div class="card">
                 <input type="text" class="card-number" id="card-number" value="{{$cheque->personne->prenom}}">
             </div>
             <br/>
-            <label><h2>Numéro du CIN </h2></label>
+            <label><h3>Numéro du CIN </h3></label>
             <div class="card">
                 <input type="text" class="card-number" id="card-number"value="{{$cheque->personne->CIN}}">
             </div>
+            <br/>
+            <label><h3>Validité </h3></label>
+            <div class="card">
+                <input type="text" class="card-number" id="card-number"value="{{$cheque->validité}}">
+            </div>
             <div class="separator"><label></label></div>
             <div class="cvr">
-                <div class="cvr1">
-                    <label><strong>Validité</strong></label>
-                    <input type="text" class="cvc" value="{{$cheque->validité}}">
-                </div>
-                <div class="cvr2">
-                    <label></label>
-                    <input type="text" class="cvc">
-                </div>
                     <label><h2>Numéro du cheque</h2></label>
                     <input type="text" class="card-woner"id="card-woner"value="{{$cheque->numero}}">
-                <label>Montant</label>
+                <label><h2>Montant</h2></label>
                 <input type="text" class="card-woner"id="card-woner"value="{{$cheque->montant}}">
             </div>
         </div>

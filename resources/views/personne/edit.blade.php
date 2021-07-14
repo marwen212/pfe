@@ -32,49 +32,44 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Quick Example</h3>
+                        <h3 class="card-title">Editer</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                        <form action="{{ route('personne.update',$personne->id) }}" method="POST">
-                        @csrf
-                            @method('PUT')
+                            {!! Form::model($personne, ['method' => 'PATCH','route' => ['personne.update', $personne->id]]) !!}
+
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputName1">Nom</label>
-                                <input type="text" name="nom"  value="{{$personne->nom}}" class="form-control" placeholder="Nom">
-
+                                {!! Form::text('nom', null, array('placeholder' => 'Nom','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">prenom</label>
-                                <input type="text" name="prenom" value="{{$personne->prenom}}"class="form-control" placeholder="Prenom">
-
+                                {!! Form::text('prenom', null, array('placeholder' => 'prenom','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">CIN</label>
-                                <input type="number" name="CIN"  value="{{$personne->CIN}}"class="form-control" placeholder="CIN">
-
+                                <label for="exampleInputNumber1">CIN</label>
+                                {!! Form::number('CIN',null, array('placeholder' => 'CIN','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">Date de Naissance</label>
-                                <input type="text" name="date_naiss"  value="{{$personne->date_naiss}}"class="form-control" placeholder="JJ/MM/AAAA">
-
+                                <label for="exampleInputNumber1">Date de Naissance</label>
+                                {!! Form::date('date_naiss',null, array('placeholder' => 'Date de Naissance','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">Numero Telephone</label>
-                                <input type="number" name="tel" value="{{$personne->tel}}"class="form-control" placeholder="Votre Numero">
+                                <label for="exampleInputNumber1">Numero Telephone</label>
+                                {!! Form::number('tel',null, array('placeholder' => 'Your phone number','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">adresse</label>
-                                <input type="text" name="adresse" value="{{$personne->adresse}}" class="form-control" placeholder="Adresse">
+                                <label for="exampleInputName1">Adresse</label>
+                                {!! Form::text('adresse', null, array('placeholder' => 'adresse','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Situation Familiale</label>
-                                <input type="text" name="Situation_Fam" value="{{$personne->Situation_Fam}}"class="form-control" placeholder="Situation Familiale">
+                                {!! Form::text('Situation_Fam', null, array('placeholder' => 'Situation Familiale','class' => 'form-control','required'=>'')) !!}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">Nombre d'enfant</label>
-                                <input type="number" name="nb_enfants" value="{{$personne->nb_enfants}}"class="form-control">
+                                <label for="exampleInputNumber1">Nombre d'enfant</label>
+                                {!! Form::number('nb_enfants',null, array('placeholder' => 'Nombre enfant','class' => 'form-control','required'=>'')) !!}
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -82,7 +77,7 @@
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </section>

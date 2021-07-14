@@ -58,9 +58,9 @@
                                         <td>{{$cheque->validité}}</td>
                                         <td>{{$cheque->personne->nom ?? ''}}</td>
                                         <td>
-                                            <form action="#" method="POST">
+                                            <form action="{{ route('cheque.destroy',$cheque->id) }}" method="POST">
                                                 <a class="btn btn-info" href="{{ route('cheque.show',$cheque->id) }}">Show</a>
-                                                <a class="btn btn-primary" href="#">Edit</a>
+                                                <a class="btn btn-primary" href="{{ route('cheque.edit',$cheque->id) }}">Edit</a>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>

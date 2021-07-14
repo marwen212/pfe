@@ -51,18 +51,30 @@ Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPassw
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+Route::resource('achat', \App\Http\Controllers\AchatController::class);
+Route::resource('reclamation', \App\Http\Controllers\ReclamationController::class);
+//Route::get('/reclamation', 'App\Http\Controllers\ReclamationController@index')->name('reclamation.index');
+
+//Route::get('/achats/show/{id}', 'App\Http\Controllers\AchatController@show')->name('achats.show');
 
 
-Route::get('/cheques/create', 'App\Http\Controllers\ChequeController@create')->name('cheque.create');
-Route::post('/cheques/createe', 'App\Http\Controllers\ChequeController@store')->name('cheque.store');
 
-Route::get('/cheques', 'App\Http\Controllers\ChequeController@index')->name('cheque.index');
-Route::get('/achat', 'App\Http\Controllers\AchatController@index')->name('achat.index');
+
+//Route::get('/cheques/create', 'App\Http\Controllers\ChequeController@create')->name('cheque.create');
+//Route::post('/cheques/createe', 'App\Http\Controllers\ChequeController@store')->name('cheque.store');
+
+//Route::get('/cheques', 'App\Http\Controllers\ChequeController@index')->name('cheque.index');
+
+
+
+
 Route::get('/reclamation', 'App\Http\Controllers\ReclamationController@index')->name('reclamation.index');
 Route::get('/reclamation/1', 'App\Http\Controllers\ReclamationController@show')->name('reclamation.show');
 
 //Route::get('/cheques/create', 'App\Http\Controllers\ChequeController@show')->name('cheque.create');
-Route::get('/cheques/show/{id}', 'App\Http\Controllers\ChequeController@show')->name('cheque.show');
+//Route::get('/cheques/show/{id}', 'App\Http\Controllers\ChequeController@show')->name('cheque.show');
+Route::resource('cheque', \App\Http\Controllers\ChequeController::class);
+
 
 /*Route::get('/cheque/create', 'App\Http\Controllers\ChequeController@create')->name('cheque.create');
 Route::get('/cheque/printe', 'App\Http\Controllers\ChequeController@imprimer')->name('cheque.printe');*/

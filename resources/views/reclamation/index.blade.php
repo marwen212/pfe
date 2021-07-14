@@ -41,22 +41,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach ($reclamations as $reclamation)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Marwen</td>
-                                        <td>aaaaaaa</td>
+                                        <td>{{$reclamation->id}}</td>
+                                        <td>{{$reclamation->marchand->id}}</td>
+                                        <td>{{$reclamation->sujet}}</td>
                                         <td>
-
-                                            <form action="#" method="POST">
-                                                <a class="btn btn-info" href="{{ route('reclamation.show') }}">Show</a>
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-
-                                            </form>
-
+                                                <a class="btn btn-info" href="{{ route('achat.show',$reclamation->id) }}">Show</a>
                                         </td>
                                     </tr>
-
+                                    @endforeach
                                     </tbody>
 
                                 </table>

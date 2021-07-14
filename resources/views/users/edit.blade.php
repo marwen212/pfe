@@ -59,15 +59,6 @@
                     {!! Form::number('phone',null, array('placeholder' => 'Your phone number','class' => 'form-control','required'=>'')) !!}
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile">Photo</label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="photo">Choose file</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label for="exampleInputPassword1">Role</label>
                     {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
                 </div>

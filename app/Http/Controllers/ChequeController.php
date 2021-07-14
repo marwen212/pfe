@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Personne;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\Response;
 use App\Models\Cheque;
-use Illuminate\Support\Arr;
-use Hash;
+use App\Models\Personne;
 
 class ChequeController extends Controller
-
 {
     /**
      * Display a listing of the resource.
@@ -38,6 +33,7 @@ class ChequeController extends Controller
         //return view('');
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -47,7 +43,7 @@ class ChequeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'numero' => 'required',
+            'numero' => 'required|unique:cheques,numero',
             'montant' => 'required',
             'validité' => 'required',
             'personne_id'=>'required'
@@ -60,6 +56,7 @@ class ChequeController extends Controller
         return redirect()->route('cheque.index')->with('info', 'Le coupon a bien été créé');
 
     }
+
     /**
      * Display the specified resource.
      *
@@ -76,4 +73,52 @@ class ChequeController extends Controller
 
     }
 
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $cheque = Cheque::find($id);
+
+        return view('cheque.edit',compact('cheque'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Cheque $cheque
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,  Cheque $cheque)
+    {
+
+        request()->validate([
+            'numero' => 'required',
+            'montant' => 'required',
+            'validité' => 'required',
+            'personne_id'=>'required'
+        ]);
+        $cheque->update($request->all());
+
+        return redirect()->route('cheque.index')
+            ->with('success');
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param \App\Cheque $cheque
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Cheque $cheque)
+    {
+        $cheque->delete();
+
+        return redirect()->route('cheque.index')
+            ->with('success');
+    }
 }

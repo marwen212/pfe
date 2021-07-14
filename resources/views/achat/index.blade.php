@@ -35,22 +35,23 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nom Commercant </th>
+                                        <th>ID Commercant </th>
                                         <th>Date</th>
                                         <th>Montant</th>
                                         <th width="280px">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach ($achats as $achat)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Marwen</td>
-                                        <td>12/06/2021</td>
-                                        <td>50 dt</td>
+                                        <td>{{ $achat->id }}</td>
+                                        <td>{{ $achat->marchand_id}}</td>
+                                        <td>{{ $achat->created_at}}</td>
+                                        <td>{{$achat->montant}}</td>
                                         <td>
-
-                                            <form action="#" method="POST">
-
+                                            <form action="{{ route('achat.destroy',$achat->id) }}" method="POST">
+                                                <a class="btn btn-info" href="{{ route('achat.show',$achat->id) }}">Show</a>
+                                                @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
 
@@ -58,7 +59,7 @@
 
                                         </td>
                                     </tr>
-
+                                    @endforeach
                                     </tbody>
 
                                 </table>

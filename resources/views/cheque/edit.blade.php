@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>nouveau</h1>
+                        <h1>editer</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -27,9 +27,7 @@
             </div>
         @endif
         <section class="content">
-
             <div class="container-fluid">
-
                 <!-- left column -->
                 <!-- general form elements -->
                 <div class="card card-primary">
@@ -38,34 +36,34 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ route('cheque.store') }}" method="POST">
+                    <form action="{{ route('cheque.update') }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputName1">No*</label>
-                                <input type="text" name="numero" class="form-control" placeholder="Numero">
+                                <input type="text" name="numero" class="form-control" placeholder="Numero"value="{{$cheque->numero}}">
 
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Montant*</label>
-                                <input type="number" name="montant" class="form-control" placeholder="Montant">
+                                <input type="number" name="montant" class="form-control" placeholder="Montant"value="{{$cheque->montant}}">
 
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Validité*</label>
-                                <input type="date" name="validité" class="form-control" placeholder="JJ/MM/AAAA">
+                                <input type="date" name="validité" class="form-control" placeholder="JJ/MM/AAAA" value="{{$cheque->validité}}">
 
                             </div>
                             <div class="form-group">
-
                                 <label for="Personne">Familles*</label>
-                                <select class="form-control form-control-md" id="personne_id" name="personne_id">
+                                <select class="form-control form-control-md" id="personne_id" name="personne_id" >
+                                    <option disabled>Cin Famille</option>
                                     @foreach($result->all() as $personne)
                                         <option value="{{$personne->id}}">{{$personne->CIN}}</option>
                                     @endforeach
                                 </select>
                             </div>
-
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">

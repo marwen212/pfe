@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="login-logo">
-        <a href="{{ url('/') }}"><b>Laravel</b>Admin</a>
+        <a href="#"><b>Welcome</b>Admin</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">

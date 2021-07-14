@@ -39,20 +39,19 @@
                                                     <div class="card-body">
                                                         <div class="form-group">
                                                             <label for="inputName">Sujet du reclamation</label>
-                                                            <input type="text" id="inputName" class="form-control" value="(sujet du reclamation)" disabled>
+                                                            <input type="text" id="inputName" class="form-control" value="{{$reclamation->sujet}}" disabled>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="inputDescription">Continu</label>
-                                                            <textarea id="inputDescription" class="form-control" rows="4" disabled>(Contenu du reclamation)</textarea>
+                                                            <textarea id="inputDescription" class="form-control" rows="4" disabled>{{$reclamation->message}}</textarea>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="inputStatus">Etat</label>
-                                                            <select class="form-control custom-select">
-                                                                <option selected="" disabled="">Select one</option>
-                                                                <option>Traité</option>
-                                                                <option>Non traité</option>
+                                                            <form action="{{ route('reclamation.destroy',$reclamation->id) }}" method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger">Delete</button>
 
-                                                            </select>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                     <!-- /.card-body -->

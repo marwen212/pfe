@@ -18,7 +18,7 @@ class CreateReclamationsTable extends Migration
             $table->string('sujet')->nullable();
             $table->string('message')->nullable();
             $table->foreignId('marchand_id')->references('id')->on('marchands')
-            ->onDelete('cascade')->default(null);  
+            ->onDelete('cascade')->default(null);
             $table->timestamps();
         });
     }

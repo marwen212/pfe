@@ -41,9 +41,9 @@ use Illuminate\Support\Facades\Route;
 
     });
 
-    Route::group(['prefix' => 'user','namespace'=>'User'],function (){
-        Route::post('login','AuthController@Login') ;
-    });
+  //  Route::group(['prefix' => 'user','namespace'=>'User'],function (){
+    //    Route::post('login','AuthController@Login') ;
+    //});
 
 
     Route::group(['prefix' => 'user' ,'middleware' => 'auth.guard:user-api'],function (){
@@ -57,7 +57,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::group(['middleware' => ['api','checkPassword','changeLanguage','checkAdminToken:admin-api'], 'namespace' => 'Api'], function () {
-    Route::get('offers', 'CategoriesController@index');
-});
+//Route::group(['middleware' => ['api','checkPassword','changeLanguage','checkAdminToken:admin-api'], 'namespace' => 'Api'], function () {
+  //  Route::get('offers', 'CategoriesController@index');
+//});
 
